@@ -79,7 +79,7 @@ function addCloseGlyph(li) {
     li.appendChild(button);
 }
 
-// добавляет/убирает класс checked
+// добавляет/убирает класс checked (выделение строчки при тыке)
 function onTaskComplete() {
     if (this.classList.contains('checked')) {
         this.classList.remove('checked');

@@ -1,3 +1,4 @@
+
 var glyphClose = "&#x2718";
 
 //тащим таски с localStorage

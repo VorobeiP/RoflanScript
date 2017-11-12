@@ -1,5 +1,6 @@
 var glyphClose = "&#x2718";
 
+//гы
 //тащим таски с localStorage
 //также вызывается при обновлении
 window.onload = function () {

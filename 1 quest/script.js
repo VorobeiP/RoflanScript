@@ -5,8 +5,8 @@ var glyphClose = "&#x2718";
 window.onload = function () {
     var size = localStorage.length - 1;
     var selectedTasks = localStorage.getItem(size).split(",");
+    var check = undefined;
     for (var i = 0, j = 0; i < size; i++) {
-        var check = undefined;
         if (selectedTasks[j] == i) {
             check = selectedTasks[j];
             j++;

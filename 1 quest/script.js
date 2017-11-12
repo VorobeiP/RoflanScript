@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 var glyphClose = "&#x2718";
 
 //тащим таски с localStorage
-//также вызывается при обновлении
+//также вызывается при обновленииsd
 window.onload = function () {
     var size = localStorage.length - 1;
     var selectedTasks = localStorage.getItem(size).split(",");
@@ -98,7 +97,6 @@ function deleteSelected() {
         }
     }
 }
-=======
 var glyphClose = "&#x2718";
 
 //тащим таски с localStorage
@@ -198,4 +196,3 @@ function deleteSelected() {
         }
     }
 }
->>>>>>> eb757bc357ac6956c3bf89ff25698ef21ca32c3b

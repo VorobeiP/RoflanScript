@@ -8,8 +8,11 @@ window.onload = function () {
     document.getElementById("addButton").onclick = newElement;
     document.getElementById("deleteButton").onclick = deleteSelected;
     newTaskField = document.getElementById("newTask");
-    taskList = document.getElementById("taskList");
-    
+    taskList = document.getElementById("taskList"); 
+    listBuild();   
+}
+
+function listBuild(){
     var size = localStorage.length - 1;
     if (size) {
         var selectedTasks = localStorage.getItem(size).split(",");

@@ -1,20 +1,28 @@
 
 var glyphClose = "&#x2718";
-
+var newTaskField;
+var taskList;
 //тащим таски с localStorage
 //также вызывается при обновленииsd
 window.onload = function () {
+    document.getElementById("addButton").onclick = newElement;
+    document.getElementById("deleteButton").onclick = deleteSelected;
+    newTaskField = document.getElementById("newTask");
+    taskList = document.getElementById("taskList");
+    
     var size = localStorage.length - 1;
-    var selectedTasks = localStorage.getItem(size).split(",");
-    var check = undefined;
-    for (var i = 0, j = 0; i < size; i++) {
-        if (selectedTasks[j] == i) {
-            check = selectedTasks[j];
-            j++;
+    if (size) {
+        var selectedTasks = localStorage.getItem(size).split(",");
+        var check = undefined;
+        for (var i = 0, j = 0; i < size; i++) {
+            if (selectedTasks[j] == i) {
+                check = selectedTasks[j];
+                j++;
+            }
+            addTask(localStorage.getItem(i), check);
+            check = undefined;
         }
-        addTask(localStorage.getItem(i), check);
-        check = undefined;
-    }
+    }    
 }
 
 //задания могут смещаться, либо сравнивать все либо перезаписать все
@@ -39,20 +47,18 @@ window.onunload = function () {
 }
 
 //новый элемент, функция кнопки Add
+
 function newElement() {
-    var newTask = document.getElementById("newTask").value;
-    newTask = newTask.trim();
-    if (newTask) {
-        addTask(newTask);
+    if (newTaskField.value.trim()) {
+        addTask(newTaskField.value);
     } else {
         alert('Зачем тебе пустое задание, глупенький?\nИ да, лишние пробелы оставь себе)))');
     }
-    document.getElementById("newTask").value = "";
+    newTaskField.value = "";
 }
 
 //функция, заворачивает строку в теги для добавления в список, присобачивает кнопку 
 function addTask(newTask, selectedTasks) {
-    var taskList = document.getElementById("taskList");
     var li = document.createElement("li");
     var text = document.createElement("span");
     text.innerText = newTask;

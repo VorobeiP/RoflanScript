@@ -87,6 +87,6 @@ function getWinCircle() {
 function clearCrcl() {
     alert("ГЦ! Вы нарандомили: " + winString);
     this.removeEventListener('click', generate);
-    this.classList.remove("win");
+    this.classList.remove("win");    
     rollButton.addEventListener('click', onStartClick);
 }

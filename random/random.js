@@ -2,9 +2,10 @@ var chances = [0.001, 0.099, 0.2, 0.3, 0.4];
 var range = [0];
 var max = 10000001;
 var min = 1;
-var button;
+var randomButton;
 var event = new Event("click");;
 var timerId;
+var winString;
 
 var Glock;
 var AK;
@@ -12,20 +13,19 @@ var Petuh;
 var AVP;
 
 
-window.onload = function () {
+function generatorLoad() {
     initRanges();
-    button = document.getElementById("generateButton");
+    randomButton = document.getElementById("generateButton");
     document.getElementById("generateButton").addEventListener("click", generate);
     Glock = document.getElementById("Glock");
     AK = document.getElementById("AK");
     Petuh = document.getElementById("Petuh");
     AVP = document.getElementById("AVP");
-
     timerId = setInterval(timerGen, 10);
 }
 
-function timerGen(){
-    button.dispatchEvent(event);
+function timerGen() {
+    randomButton.dispatchEvent(event);
 }
 
 function initRanges() {
@@ -48,30 +48,29 @@ function randomByChance(int) {
     }
 }
 
-var counter = 0;
+var randomCounter = 0;
 
 function generate() {
     var a = randomByChance(randomInt(min, max));
-    counter++;
-    console.log(a);
+    randomCounter++;
     if (a === 0.4) {
-        button.innerText = "Глок";
+        winString = "Глок";
         Glock.innerText = (parseInt(Glock.innerText) + 1);
     } else if (a === 0.3) {
-        button.innerText = "Питух";
+        winString = "Питух";
         Petuh.innerText = (parseInt(Petuh.innerText) + 1);
     } else if (a === 0.2) {
-        button.innerText = "АК-47";
+        winString = "АК-47";
         AK.innerText = (parseInt(AK.innerText) + 1);
     } else if (a === 0.099) {
-        button.innerText = "AVP";
+        winString = "AVP";
         AVP.innerText = (parseInt(AVP.innerText) + 1);
     } else if (a === 0.001) {
-        alert("knife");
-        //document.getElementById("generateButton").removeEventListener("click", generate);
-        button.innerText = "<<<" + "Ножик!!!!! Выпал после " + counter + "попыток " + ">>>";
+        winString = "knife";
+        alert("<<<" + "Ножик!!!!! Выпал после " + randomCounter + "попыток " + ">>>");
         clearTimeout(timerId);
     }
+    randomButton.innerText = winString;
 }
 
 
